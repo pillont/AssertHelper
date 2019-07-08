@@ -15,7 +15,7 @@ If you use `AssertHelper.ReflectionProxies` thinks to add reference to `System.R
 ##### Simplify If condition / throw
 
 The **sample case** :
-```
+```csharp
 private void AssertFunc(object parameter)
 {
     Assert.NotNull(parameter);
@@ -35,7 +35,7 @@ AssertFunc(null);
 \
 \
 We can add **custom parameter name** :
-```
+```csharp
 private void AssertFunc(object specificName)
 {
     Assert.NotNull(specificName, nameof(specificName));
@@ -54,7 +54,7 @@ AssertFunc(null);
 \
 \
 We can add **custom message** :
-```
+```csharp
 private void AssertFunc(object specificName)
 {
     Assert.NotNull(specificName, nameof(specificName), "specific message");
@@ -73,7 +73,7 @@ AssertFunc(null);
 \
 \
 Or use **custom exception** :
-```
+```csharp
 private void AssertFunc(object specificName)
 {
     Assert.NotNull(specificName, new SpecificException("specific arguments"));

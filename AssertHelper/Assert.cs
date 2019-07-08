@@ -37,7 +37,7 @@ namespace AssertHelper
         /// <param name="message"> specific message to show on error case </param>
         /// <param name="comparer"> comparer to use in equal comparison </param>
         /// <exception cref="DefaultAssertException"> if assert false</exception>
-        public static void Default<T>(T value, string paramName, string message = null)
+        public static void Default<T>(T value, string paramName = null, string message = null)
         {
             message = message ?? $"{value} must be default value";
             var defaultValue = default(T);
@@ -63,7 +63,7 @@ namespace AssertHelper
         /// <param name="message"> specific message to show on error case </param>
         /// <param name="comparer"> comparer to use in equal comparison </param>
         /// <exception cref="EmptyAssertException"> if assert false</exception>
-        public static void Empty(IEnumerable value, string paramName, string message = null)
+        public static void Empty(IEnumerable value, string paramName = null, string message = null)
         {
             message = message ?? "list must not be empty";
             if (value?.GetEnumerator()?.MoveNext() ?? false)
@@ -81,7 +81,7 @@ namespace AssertHelper
         /// <param name="message"> specific message to show on error case </param>
         /// <param name="comparer"> comparer to use in equal comparison </param>
         /// <exception cref="BooleanAssertException"> if assert false</exception>
-        public static void False(bool value, string paramName, string message = null)
+        public static void False(bool value, string paramName = null, string message = null)
         {
             message = message ?? "value must be false";
 
@@ -99,9 +99,9 @@ namespace AssertHelper
         /// </param>
         /// <param name="message"> specific message to show on error case </param>
         /// <exception cref="ComparisonAssertException"> if assert false</exception>
-        public static void GreaterThan(double value, double border, string paramName, string message = null, bool allowEquality = false)
+        public static void GreaterThan(double value, double border, string paramName = null, string message = null, bool allowEquality = false)
         {
-            message = message ?? $"variable {paramName} must be greater than {border}";
+            message = message ?? $"variable {paramName ?? string.Empty} must be greater than {border} but was {value}";
 
             if (value > border
             || (allowEquality
@@ -122,9 +122,9 @@ namespace AssertHelper
         /// </param>
         /// <param name="message"> specific message to show on error case </param>
         /// <exception cref="TypeAssertException"> if assert false</exception>
-        public static void IsAssignable<T>(object target, string paramName, string message = null)
+        public static void IsAssignable<T>(object target, string paramName = null, string message = null)
         {
-            message = message ?? $"{paramName} must implement {typeof(T).Name}";
+            message = message ?? $"{paramName ?? target.GetType().Name} must implement {typeof(T).Name}";
 
             if (!(target is T))
                 throw new TypeAssertException(paramName, message);
@@ -141,9 +141,9 @@ namespace AssertHelper
         /// </param>
         /// <param name="message"> specific message to show on error case </param>
         /// <exception cref="ComparisonAssertException"> if assert false</exception>
-        public static void LessThan(double value, double border, string paramName, string message = null, bool allowEquality = false)
+        public static void LessThan(double value, double border, string paramName = null, string message = null, bool allowEquality = false)
         {
-            message = message ?? $"variable {paramName} must be less than {border}";
+            message = message ?? $"variable {paramName } must be less than {border} but was {value}";
 
             if (value < border
             || (allowEquality
@@ -163,7 +163,7 @@ namespace AssertHelper
         /// </param>
         /// <param name="message"> specific message to show on error case </param>
         /// <exception cref="DefaultAssertException"> if assert false</exception>
-        public static void NotDefault<T>(T value, string paramName, string message = null)
+        public static void NotDefault<T>(T value, string paramName = null, string message = null)
         {
             message = message ?? $"value must not be default of {typeof(T)}";
             if (value == null)
@@ -188,9 +188,9 @@ namespace AssertHelper
         /// </param>
         /// <param name="message"> specific message to show on error case </param>
         /// <exception cref="EmptyAssertException"> if assert false</exception>
-        public static void NotEmpty(IEnumerable value, string paramName, string message = null)
+        public static void NotEmpty(IEnumerable value, string paramName = null, string message = null)
         {
-            message = message ?? $"list must not not be empty";
+            message = message ?? $"list must not be empty";
 
             if ((!value?.GetEnumerator()?.MoveNext()) ?? true)
                 throw new EmptyAssertException(message, paramName);
@@ -206,9 +206,9 @@ namespace AssertHelper
         /// </param>
         /// <param name="message"> specific message to show on error case </param>
         /// <exception cref="NullAssertException"> if assert false</exception>
-        public static void NotNull(object value, string paramName, string message = null)
+        public static void NotNull(object value, string paramName = null, string message = null)
         {
-            message = message ?? $"parameter : {paramName} message : {message ?? $"value must be null but was not"}";
+            message = message ?? $"parameter {paramName} : {message ?? $"must be null but was not"}";
 
             if (value == null)
                 throw new NullAssertException(message, paramName);
@@ -224,9 +224,9 @@ namespace AssertHelper
         /// </param>
         /// <param name="message"> specific message to show on error case </param>
         /// <exception cref="NullAssertException"> if assert false</exception>
-        public static void Null(object value, string paramName, string message = null)
+        public static void Null(object value, string paramName = null, string message = null)
         {
-            message = message ?? $"parameter : {paramName} message : {message ?? $"value must be null but was not"}";
+            message = message ?? $"parameter {paramName} : {message ?? $"value must be null but was not"}";
             if (value != null)
                 throw new NullAssertException(message, paramName);
         }
@@ -241,9 +241,9 @@ namespace AssertHelper
         /// </param>
         /// <param name="message"> specific message to show on error case </param>
         /// <exception cref="BooleanAssertException"> if assert false</exception>
-        public static void True(bool value, string paramName, string message = null)
+        public static void True(bool value, string paramName = null, string message = null)
         {
-            message = message ?? $"parameter : {paramName} message : {message ?? $"value must be true but was not"}";
+            message = message ?? $"parameter {paramName} : {message ?? $"value must be true but was not"}";
             if (!value)
                 throw new BooleanAssertException(paramName, message);
         }

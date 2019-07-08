@@ -8,7 +8,7 @@ namespace AssertHelper.Tests.Core
 {
     public class AssertTryTests : IClassFixture<AssertFixture>
     {
-        public AssertTryTests(AssertFixture fixture)
+        public AssertTryTests()
         { }
 
         [Fact]

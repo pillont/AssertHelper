@@ -60,7 +60,7 @@ namespace AssertHelper
         /// <param name="message"> specific message to show on error case </param>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
         /// <exception cref="Exceptions.DefaultAssertException"> if assert false and <see cref="TryMustDebug"/> is true</exception>
-        public static bool TryDefault<T>(T value, string paramName, string message = null)
+        public static bool TryDefault<T>(T value, string paramName = null, string message = null)
         {
             return DebugAction(() =>
                         Default<T>(value, paramName, message));
@@ -77,7 +77,7 @@ namespace AssertHelper
         /// <param name="message"> specific message to show on error case </param>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
         /// <exception cref="Exceptions.EmptyAssertException"> if assert false and <see cref="TryMustDebug"/> is true</exception>
-        public static bool TryEmpty(IEnumerable value, string paramName, string message = null)
+        public static bool TryEmpty(IEnumerable value, string paramName = null, string message = null)
         {
             return DebugAction(() =>
                         Empty(value, paramName, message));
@@ -94,7 +94,7 @@ namespace AssertHelper
         /// <param name="message"> specific message to show on error case </param>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
         /// <exception cref="Exceptions.BooleanAssertException"> if assert false and <see cref="TryMustDebug"/> is true</exception>
-        public static bool TryFalse(bool value, string paramName, string message = null)
+        public static bool TryFalse(bool value, string paramName = null, string message = null)
         {
             return DebugAction(() =>
                         False(value, paramName, message));
@@ -112,7 +112,7 @@ namespace AssertHelper
         /// <param name="message"> specific message to show on error case </param>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
         /// <exception cref="Exceptions.ComparisonAssertException"> if assert false and <see cref="TryMustDebug"/> is true</exception>
-        public static bool TryGreaterThan(double value, double border, string paramName, string message = null)
+        public static bool TryGreaterThan(double value, double border, string paramName = null, string message = null)
         {
             return DebugAction(() =>
                         GreaterThan(value, border, paramName, message));
@@ -129,7 +129,7 @@ namespace AssertHelper
         /// </param>
         /// <param name="message"> specific message to show on error case </param>
         /// <exception cref="Exceptions.TypeAssertException"> if assert false and <see cref="TryMustDebug"/> is true</exception>
-        public static bool TryIsAssignable<T>(object value, string paramName, string message = null)
+        public static bool TryIsAssignable<T>(object value, string paramName = null, string message = null)
         {
             return DebugAction(() =>
                         IsAssignable<T>(value, paramName, message));
@@ -147,7 +147,7 @@ namespace AssertHelper
         /// <param name="message"> specific message to show on error case </param>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
         /// <exception cref="Exceptions.ComparisonAssertException"> if assert false and <see cref="TryMustDebug"/> is true</exception>
-        public static bool TryLessThan(double value, double border, string paramName, string message = null)
+        public static bool TryLessThan(double value, double border, string paramName = null, string message = null)
         {
             return DebugAction(() =>
                         LessThan(value, border, paramName, message));
@@ -164,7 +164,7 @@ namespace AssertHelper
         /// <param name="message"> specific message to show on error case </param>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
         /// <exception cref="Exceptions.DefaultAssertException"> if assert false and <see cref="TryMustDebug"/> is true</exception>
-        public static bool TryNotDefault<T>(T value, string paramName, string message = null)
+        public static bool TryNotDefault<T>(T value, string paramName = null, string message = null)
         {
             return DebugAction(() =>
                         NotDefault<T>(value, paramName, message));
@@ -181,7 +181,7 @@ namespace AssertHelper
         /// <param name="message"> specific message to show on error case </param>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
         /// <exception cref="Exceptions.EmptyAssertException"> if assert false and <see cref="TryMustDebug"/> is true</exception>
-        public static bool TryNotEmpty(IEnumerable value, string paramName, string message = null)
+        public static bool TryNotEmpty(IEnumerable value, string paramName = null, string message = null)
         {
             return DebugAction(() =>
                         NotEmpty(value, paramName, message));
@@ -198,7 +198,7 @@ namespace AssertHelper
         /// <param name="message"> specific message to show on error case </param>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
         /// <exception cref="Exceptions.NullAssertException"> if assert false and <see cref="TryMustDebug"/> is true</exception>
-        public static bool TryNotNull(object value, string paramName, string message = null)
+        public static bool TryNotNull(object value, string paramName = null, string message = null)
         {
             return DebugAction(() =>
                         NotNull(value, paramName, message));
@@ -215,7 +215,7 @@ namespace AssertHelper
         /// <param name="message"> specific message to show on error case </param>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
         /// <exception cref="Exceptions.NullAssertException"> if assert false and <see cref="TryMustDebug"/> is true</exception>
-        public static bool TryNull(object value, string paramName, string message = null)
+        public static bool TryNull(object value, string paramName = null, string message = null)
         {
             return DebugAction(() =>
                         Null(value, paramName, message));
@@ -232,7 +232,7 @@ namespace AssertHelper
         /// <param name="message"> specific message to show on error case </param>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
         /// <exception cref="Exceptions.BooleanAssertException"> if assert false and <see cref="TryMustDebug"/> is true</exception>
-        public static bool TryTrue(bool value, string paramName, string message = null)
+        public static bool TryTrue(bool value, string paramName = null, string message = null)
         {
             return DebugAction(() =>
                         True(value, paramName, message));

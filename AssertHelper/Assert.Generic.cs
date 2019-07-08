@@ -44,8 +44,13 @@ namespace AssertHelper
         /// to inform in error message
         /// </param>
         /// <param name="message"> specific message to show on error case </param>
+        /// <typeparamref name="T">
+        /// Type of the exception throw by if fail
+        /// must have ctor(string) or defautl ctor
+        /// </typeparamref>
+        /// <exception cref="AssertException"> if ctor of the wanted exception not found </exception>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
-        public static void Default<T, U>(U value, string paramName, string message = null)
+        public static void Default<T, U>(U value, string paramName = null, string message = null)
             where T : Exception
         {
             DebugAction<T>(() =>
@@ -61,8 +66,13 @@ namespace AssertHelper
         /// to inform in error message
         /// </param>
         /// <param name="message"> specific message to show on error case </param>
+        /// <typeparamref name="T">
+        /// Type of the exception throw by if fail
+        /// must have ctor(string) or defautl ctor
+        /// </typeparamref>
+        /// <exception cref="AssertException"> if ctor of the wanted exception not found </exception>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
-        public static void Empty<T>(IEnumerable value, string paramName, string message = null)
+        public static void Empty<T>(IEnumerable value, string paramName = null, string message = null)
             where T : Exception
         {
             DebugAction<T>(() =>
@@ -78,8 +88,13 @@ namespace AssertHelper
         /// to inform in error message
         /// </param>
         /// <param name="message"> specific message to show on error case </param>
+        /// <typeparamref name="T">
+        /// Type of the exception throw by if fail
+        /// must have ctor(string) or defautl ctor
+        /// </typeparamref>
+        /// <exception cref="AssertException"> if ctor of the wanted exception not found </exception>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
-        public static void False<T>(bool value, string paramName, string message = null)
+        public static void False<T>(bool value, string paramName = null, string message = null)
             where T : Exception
         {
             DebugAction<T>(() =>
@@ -96,8 +111,13 @@ namespace AssertHelper
         /// to inform in error message
         /// </param>
         /// <param name="message"> specific message to show on error case </param>
+        /// <typeparamref name="T">
+        /// Type of the exception throw by if fail
+        /// must have ctor(string) or defautl ctor
+        /// </typeparamref>
+        /// <exception cref="AssertException"> if ctor of the wanted exception not found </exception>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
-        public static void GreaterThan<T>(double value, double border, string paramName, string message = null)
+        public static void GreaterThan<T>(double value, double border, string paramName = null, string message = null)
             where T : Exception
         {
             DebugAction<T>(() =>
@@ -114,8 +134,13 @@ namespace AssertHelper
         /// name of the param about this assert
         /// to inform in error message
         /// </param>
+        /// <typeparamref name="T">
+        /// Type of the exception throw by if fail
+        /// must have ctor(string) or defautl ctor
+        /// </typeparamref>
+        /// <exception cref="AssertException"> if ctor of the wanted exception not found </exception>
         /// <param name="message"> specific message to show on error case </param>
-        public static void IsAssignable<T, U>(object value, string paramName, string message = null)
+        public static void IsAssignable<T, U>(object value, string paramName = null, string message = null)
             where T : Exception
         {
             DebugAction<T>(() =>
@@ -132,8 +157,13 @@ namespace AssertHelper
         /// to inform in error message
         /// </param>
         /// <param name="message"> specific message to show on error case </param>
+        /// <typeparamref name="T">
+        /// Type of the exception throw by if fail
+        /// must have ctor(string) or defautl ctor
+        /// </typeparamref>
+        /// <exception cref="AssertException"> if ctor of the wanted exception not found </exception>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
-        public static void LessThan<T>(double value, double border, string paramName, string message = null)
+        public static void LessThan<T>(double value, double border, string paramName = null, string message = null)
             where T : Exception
         {
             DebugAction<T>(() =>
@@ -149,8 +179,13 @@ namespace AssertHelper
         /// to inform in error message
         /// </param>
         /// <param name="message"> specific message to show on error case </param>
+        /// <typeparamref name="T">
+        /// Type of the exception throw by if fail
+        /// must have ctor(string) or defautl ctor
+        /// </typeparamref>
+        /// <exception cref="AssertException"> if ctor of the wanted exception not found </exception>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
-        public static void NotDefault<T>(object value, string paramName, string message = null)
+        public static void NotDefault<T>(object value, string paramName = null, string message = null)
             where T : Exception
         {
             DebugAction<T>(() =>
@@ -166,8 +201,13 @@ namespace AssertHelper
         /// to inform in error message
         /// </param>
         /// <param name="message"> specific message to show on error case </param>
+        /// <typeparamref name="T">
+        /// Type of the exception throw by if fail
+        /// must have ctor(string) or defautl ctor
+        /// </typeparamref>
+        /// <exception cref="AssertException"> if ctor of the wanted exception not found </exception>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
-        public static void NotEmpty<T>(IEnumerable value, string paramName, string message = null)
+        public static void NotEmpty<T>(IEnumerable value, string paramName = null, string message = null)
             where T : Exception
         {
             DebugAction<T>(() =>
@@ -183,8 +223,13 @@ namespace AssertHelper
         /// to inform in error message
         /// </param>
         /// <param name="message"> specific message to show on error case </param>
+        /// <typeparamref name="T">
+        /// Type of the exception throw by if fail
+        /// must have ctor(string) or defautl ctor
+        /// </typeparamref>
+        /// <exception cref="AssertException"> if ctor of the wanted exception not found </exception>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
-        public static void NotNull<T>(object value, string paramName, string message = null)
+        public static void NotNull<T>(object value, string paramName = null, string message = null)
             where T : Exception
         {
             DebugAction<T>(() =>
@@ -200,8 +245,13 @@ namespace AssertHelper
         /// to inform in error message
         /// </param>
         /// <param name="message"> specific message to show on error case </param>
+        /// <typeparamref name="T">
+        /// Type of the exception throw by if fail
+        /// must have ctor(string) or defautl ctor
+        /// </typeparamref>
+        /// <exception cref="AssertException"> if ctor of the wanted exception not found </exception>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
-        public static void Null<T>(object value, string paramName, string message = null)
+        public static void Null<T>(object value, string paramName = null, string message = null)
             where T : Exception
         {
             DebugAction<T>(() =>
@@ -217,8 +267,13 @@ namespace AssertHelper
         /// to inform in error message
         /// </param>
         /// <param name="message"> specific message to show on error case </param>
+        /// <typeparamref name="T">
+        /// Type of the exception throw by if fail
+        /// must have ctor(string) or defautl ctor
+        /// </typeparamref>
+        /// <exception cref="AssertException"> if ctor of the wanted exception not found </exception>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
-        public static void True<T>(bool value, string paramName, string message = null)
+        public static void True<T>(bool value, string paramName = null, string message = null)
             where T : Exception
         {
             DebugAction<T>(() =>
@@ -240,7 +295,6 @@ namespace AssertHelper
             catch (Exception e)
             {
                 bool useMessage = true;
-                var arguments = new object[] { e.Message };
                 var ctor = typeof(T).GetConstructor(new[] { typeof(string) });
 
                 if (ctor == null)

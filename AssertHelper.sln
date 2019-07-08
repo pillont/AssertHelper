@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssertHelper.Utils", "Asser
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F4A5908B-604C-4E7C-8B25-8CE093F65E2F}"
 	ProjectSection(SolutionItems) = preProject
-		TODO.txt = TODO.txt
+		ReadMe.md = ReadMe.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{34A1F271-7791-408A-BA4E-160E2E3DD43A}"

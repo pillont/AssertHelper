@@ -1,38 +1,9 @@
-using AssertHelper.Exceptions;
+﻿using AssertHelper.Exceptions;
 using System;
 using System.Collections;
 
 namespace AssertHelper
 {
-    /// <summary>
-    /// contains same function same sample assert
-    /// but can custom exception type
-    /// </summary>
-    /// <example>
-    ///
-    /// public void Main()
-    /// {
-    ///     try
-    ///     {
-    ///         // throw custom type if assert fail
-    ///         TryExample(null);
-    ///     }
-    ///     catch(CustomException e)
-    ///     {
-    ///         // assert catch
-    ///         [...]
-    ///     }
-    /// }
-    ///
-    /// public void TryExample(object obj)
-    /// {
-    ///     // Assert check
-    ///     Assert.NotNull<CustomException>(obj);
-    ///
-    ///     [...]
-    /// }
-    ///
-    /// </example>
     public static partial class Assert
     {
         /// <summary>
@@ -50,10 +21,9 @@ namespace AssertHelper
         /// </typeparamref>
         /// <exception cref="AssertException"> if ctor of the wanted exception not found </exception>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
-        public static void Default<T, U>(U value, string paramName = null, string message = null)
-            where T : Exception
+        public static void Default<U>(U value, Exception e, string paramName = null, string message = null)
         {
-            DebugAction<T>(() =>
+            CatchOnAction(e, () =>
                         Default<U>(value, paramName, message));
         }
 
@@ -72,10 +42,9 @@ namespace AssertHelper
         /// </typeparamref>
         /// <exception cref="AssertException"> if ctor of the wanted exception not found </exception>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
-        public static void Empty<T>(IEnumerable value, string paramName = null, string message = null)
-            where T : Exception
+        public static void Empty(IEnumerable value, Exception e, string paramName = null, string message = null)
         {
-            DebugAction<T>(() =>
+            CatchOnAction(e, () =>
                         Empty(value, paramName, message));
         }
 
@@ -94,10 +63,9 @@ namespace AssertHelper
         /// </typeparamref>
         /// <exception cref="AssertException"> if ctor of the wanted exception not found </exception>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
-        public static void False<T>(bool value, string paramName = null, string message = null)
-            where T : Exception
+        public static void False(bool value, Exception e, string paramName = null, string message = null)
         {
-            DebugAction<T>(() =>
+            CatchOnAction(e, () =>
                         False(value, paramName, message));
         }
 
@@ -117,10 +85,9 @@ namespace AssertHelper
         /// </typeparamref>
         /// <exception cref="AssertException"> if ctor of the wanted exception not found </exception>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
-        public static void GreaterThan<T>(double value, double border, string paramName = null, string message = null)
-            where T : Exception
+        public static void GreaterThan(double value, double border, Exception e, string paramName = null, string message = null)
         {
-            DebugAction<T>(() =>
+            CatchOnAction(e, () =>
                         GreaterThan(value, border, paramName, message));
         }
 
@@ -140,10 +107,9 @@ namespace AssertHelper
         /// </typeparamref>
         /// <exception cref="AssertException"> if ctor of the wanted exception not found </exception>
         /// <param name="message"> specific message to show on error case </param>
-        public static void IsAssignable<T, U>(object value, string paramName = null, string message = null)
-            where T : Exception
+        public static void IsAssignable<U>(object value, Exception e, string paramName = null, string message = null)
         {
-            DebugAction<T>(() =>
+            CatchOnAction(e, () =>
                         IsAssignable<U>(value, paramName, message));
         }
 
@@ -163,10 +129,9 @@ namespace AssertHelper
         /// </typeparamref>
         /// <exception cref="AssertException"> if ctor of the wanted exception not found </exception>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
-        public static void LessThan<T>(double value, double border, string paramName = null, string message = null)
-            where T : Exception
+        public static void LessThan(double value, double border, Exception e, string paramName = null, string message = null)
         {
-            DebugAction<T>(() =>
+            CatchOnAction(e, () =>
                         LessThan(value, border, paramName, message));
         }
 
@@ -185,10 +150,9 @@ namespace AssertHelper
         /// </typeparamref>
         /// <exception cref="AssertException"> if ctor of the wanted exception not found </exception>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
-        public static void NotDefault<T>(object value, string paramName = null, string message = null)
-            where T : Exception
+        public static void NotDefault(object value, Exception e, string paramName = null, string message = null)
         {
-            DebugAction<T>(() =>
+            CatchOnAction(e, () =>
                         NotDefault(value, paramName, message));
         }
 
@@ -207,10 +171,9 @@ namespace AssertHelper
         /// </typeparamref>
         /// <exception cref="AssertException"> if ctor of the wanted exception not found </exception>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
-        public static void NotEmpty<T>(IEnumerable value, string paramName = null, string message = null)
-            where T : Exception
+        public static void NotEmpty(IEnumerable value, Exception e, string paramName = null, string message = null)
         {
-            DebugAction<T>(() =>
+            CatchOnAction(e, () =>
                         NotEmpty(value, paramName, message));
         }
 
@@ -229,10 +192,9 @@ namespace AssertHelper
         /// </typeparamref>
         /// <exception cref="AssertException"> if ctor of the wanted exception not found </exception>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
-        public static void NotNull<T>(object value, string paramName = null, string message = null)
-            where T : Exception
+        public static void NotNull(object value, Exception e, string paramName = null, string message = null)
         {
-            DebugAction<T>(() =>
+            CatchOnAction(e, () =>
                         NotNull(value, paramName, message));
         }
 
@@ -251,10 +213,9 @@ namespace AssertHelper
         /// </typeparamref>
         /// <exception cref="AssertException"> if ctor of the wanted exception not found </exception>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
-        public static void Null<T>(object value, string paramName = null, string message = null)
-            where T : Exception
+        public static void Null(object value, Exception e, string paramName = null, string message = null)
         {
-            DebugAction<T>(() =>
+            CatchOnAction(e, () =>
                         Null(value, paramName, message));
         }
 
@@ -273,46 +234,21 @@ namespace AssertHelper
         /// </typeparamref>
         /// <exception cref="AssertException"> if ctor of the wanted exception not found </exception>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
-        public static void True<T>(bool value, string paramName = null, string message = null)
-            where T : Exception
+        public static void True(bool value, Exception e, string paramName = null, string message = null)
         {
-            DebugAction<T>(() =>
-                        True(value, paramName, message));
+            CatchOnAction(e, () =>
+                         True(value, paramName, message));
         }
 
-        /// <summary>
-        /// logic about the <see cref="TryMustDebug"/>
-        /// if the value is true keep exception
-        /// else catch it to return bool result
-        /// </summary>
-        private static bool DebugAction<T>(Action action) where T : Exception
+        private static void CatchOnAction(Exception e, Action a)
         {
             try
             {
-                action?.Invoke();
-                return true;
+                a?.Invoke();
             }
-            catch (Exception e)
+            catch (AssertException)
             {
-                bool useMessage = true;
-                var ctor = typeof(T).GetConstructor(new[] { typeof(string) });
-
-                if (ctor == null)
-                {
-                    useMessage = false;
-                    typeof(T).GetConstructor(Type.EmptyTypes);
-                }
-
-                // NOTE : not use assert, else inseption of assert !
-                // EXCEPTION : StackOverflow
-                if (ctor == null)
-                    throw new AssertException($"{typeof(T)} need ctor() or ctor(string) to be used in generic assert");
-
-                var exception = useMessage
-                            ? Activator.CreateInstance(typeof(T), new[] { e.Message }) as Exception
-                            : Activator.CreateInstance<T>() as Exception;
-
-                throw exception;
+                throw e;
             }
         }
     }

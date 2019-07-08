@@ -1,0 +1,16 @@
+
+V Implementation d interface avec un nom de parametre different
+V test generic asserts
+V test des properties 
+V try operator '?'
+V test [] on param name
+V not empty attribute
+V TODO
+V castler proxy
+V Pas d'interface
+
+- 'try' in attribute ?
+- 2 librairies pour les implementations
+- documentation : 
+	- installation 'castleCore' ou dynamic proxy
+	- utilisation => preference castle proxy

@@ -11,50 +11,35 @@ namespace AssertHelper
         /// </summary>
         /// <param name="e"> exception throw if fail</param>
         /// <param name="value"> value to check </param>
-        /// <param name="paramName">
-        /// name of the param about this assert
-        /// to inform in error message
-        /// </param>
-        /// <param name="message"> specific message to show on error case </param>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
-        public static void Default<U>(U value, Exception e, string paramName = null, string message = null)
+        public static void Default<U>(U value, Exception e)
         {
             CatchOnAction(e, () =>
-                        Default<U>(value, paramName, message));
+                        Default(value));
         }
 
         /// <summary>
         /// Check if the value is empty value
         /// </summary>
         /// <param name="value"> value to check </param>
-        /// <param name="paramName">
-        /// name of the param about this assert
-        /// to inform in error message
-        /// </param>
-        /// <param name="message"> specific message to show on error case </param>
         /// <param name="e"> exception throw if fail</param>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
-        public static void Empty(IEnumerable value, Exception e, string paramName = null, string message = null)
+        public static void Empty(IEnumerable value, Exception e)
         {
             CatchOnAction(e, () =>
-                        Empty(value, paramName, message));
+                        Empty(value));
         }
 
         /// <summary>
         /// Check if the value is false
         /// </summary>
         /// <param name="value"> value to check </param>
-        /// <param name="paramName">
-        /// name of the param about this assert
-        /// to inform in error message
-        /// </param>
-        /// <param name="message"> specific message to show on error case </param>
         /// <param name="e"> exception throw if fail</param>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
-        public static void False(bool value, Exception e, string paramName = null, string message = null)
+        public static void False(bool value, Exception e)
         {
             CatchOnAction(e, () =>
-                        False(value, paramName, message));
+                        False(value));
         }
 
         /// <summary>
@@ -62,17 +47,12 @@ namespace AssertHelper
         /// </summary>
         /// <param name="value"> value to check </param>
         /// <param name="border"> border to be sure value arg is greater </param>
-        /// <param name="paramName">
-        /// name of the param about this assert
-        /// to inform in error message
-        /// </param>
-        /// <param name="message"> specific message to show on error case </param>
         /// <param name="e"> exception throw if fail</param>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
-        public static void GreaterThan(double value, double border, Exception e, string paramName = null, string message = null)
+        public static void GreaterThan(double value, double border, Exception e)
         {
             CatchOnAction(e, () =>
-                        GreaterThan(value, border, paramName, message));
+                        GreaterThan(value, border));
         }
 
         /// <summary>
@@ -80,16 +60,11 @@ namespace AssertHelper
         /// </summary>
         /// <typeparam name="U">generic Type </typeparam>
         /// <param name="target"> target to must be assignable </param>
-        /// <param name="paramName">
-        /// name of the param about this assert
-        /// to inform in error message
-        /// </param>
         /// <param name="e"> exception throw if fail</param>
-        /// <param name="message"> specific message to show on error case </param>
-        public static void IsAssignable<U>(object value, Exception e, string paramName = null, string message = null)
+        public static void IsAssignable<U>(object value, Exception e)
         {
             CatchOnAction(e, () =>
-                        IsAssignable<U>(value, paramName, message));
+                        IsAssignable<U>(value));
         }
 
         /// <summary>
@@ -97,102 +72,72 @@ namespace AssertHelper
         /// </summary>
         /// <param name="value"> value to check </param>
         /// <param name="border"> border to be sure value arg is less </param>
-        /// <param name="paramName">
-        /// name of the param about this assert
-        /// to inform in error message
-        /// </param>
-        /// <param name="message"> specific message to show on error case </param>
         /// <param name="e"> exception throw if fail</param>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
-        public static void LessThan(double value, double border, Exception e, string paramName = null, string message = null)
+        public static void LessThan(double value, double border, Exception e)
         {
             CatchOnAction(e, () =>
-                        LessThan(value, border, paramName, message));
+                        LessThan(value, border));
         }
 
         /// <summary>
         /// Check if the value is not default value
         /// </summary>
         /// <param name="value"> value to check </param>
-        /// <param name="paramName">
-        /// name of the param about this assert
-        /// to inform in error message
-        /// </param>
-        /// <param name="message"> specific message to show on error case </param>
         /// <param name="e"> exception throw if fail</param>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
-        public static void NotDefault(object value, Exception e, string paramName = null, string message = null)
+        public static void NotDefault(object value, Exception e)
         {
             CatchOnAction(e, () =>
-                        NotDefault(value, paramName, message));
+                        NotDefault(value));
         }
 
         /// <summary>
         /// Check if the value is not empty value
         /// </summary>
         /// <param name="value"> value to check </param>
-        /// <param name="paramName">
-        /// name of the param about this assert
-        /// to inform in error message
-        /// </param>
-        /// <param name="message"> specific message to show on error case </param>
         /// <param name="e"> exception throw if fail</param>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
-        public static void NotEmpty(IEnumerable value, Exception e, string paramName = null, string message = null)
+        public static void NotEmpty(IEnumerable value, Exception e)
         {
             CatchOnAction(e, () =>
-                        NotEmpty(value, paramName, message));
+                        NotEmpty(value));
         }
 
         /// <summary>
         /// Check if the value is not null
         /// </summary>
         /// <param name="value"> value to check </param>
-        /// <param name="paramName">
-        /// name of the param about this assert
-        /// to inform in error message
-        /// </param>
-        /// <param name="message"> specific message to show on error case </param>
         /// <param name="e"> exception throw if fail</param>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
-        public static void NotNull(object value, Exception e, string paramName = null, string message = null)
+        public static void NotNull(object value, Exception e)
         {
             CatchOnAction(e, () =>
-                        NotNull(value, paramName, message));
+                        NotNull(value));
         }
 
         /// <summary>
         /// Check if the value is null
         /// </summary>
         /// <param name="value"> value to check </param>
-        /// <param name="paramName">
-        /// name of the param about this assert
-        /// to inform in error message
-        /// </param>
-        /// <param name="message"> specific message to show on error case </param>
         /// <param name="e"> exception throw if fail</param>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
-        public static void Null(object value, Exception e, string paramName = null, string message = null)
+        public static void Null(object value, Exception e)
         {
             CatchOnAction(e, () =>
-                        Null(value, paramName, message));
+                        Null(value));
         }
 
         /// <summary>
         /// Check if the value is true
         /// </summary>
         /// <param name="value"> value to check </param>
-        /// <param name="paramName">
-        /// name of the param about this assert
-        /// to inform in error message
-        /// </param>
-        /// <param name="message"> specific message to show on error case </param>
         /// <param name="e"> exception throw if fail</param>
         /// <returns> return result of the assert if <see cref="TryMustDebug"/> is false </returns>
-        public static void True(bool value, Exception e, string paramName = null, string message = null)
+        public static void True(bool value, Exception e)
         {
             CatchOnAction(e, () =>
-                         True(value, paramName, message));
+                         True(value));
         }
 
         private static void CatchOnAction(Exception e, Action a)

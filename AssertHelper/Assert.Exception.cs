@@ -199,6 +199,38 @@ namespace AssertHelper
         }
 
         /// <summary>
+        /// Check if the value is not null or Empty
+        /// </summary>
+        /// <param name="value"> value to check </param>
+        /// <param name="paramName">
+        /// name of the param about this assert
+        /// to inform in error message
+        /// </param>
+        /// <param name="message"> specific message to show on error case </param>
+        /// <exception cref="NullAssertException"> if assert false</exception>
+        public static void NotNullOrEmpty(string value, Exception e, string paramName = null, string message = null)
+        {
+            CatchOnAction(e, () =>
+                            NotNullOrEmpty(value, paramName, message));
+        }
+
+        /// <summary>
+        /// Check if the value is not null or white space
+        /// </summary>
+        /// <param name="value"> value to check </param>
+        /// <param name="paramName">
+        /// name of the param about this assert
+        /// to inform in error message
+        /// </param>
+        /// <param name="message"> specific message to show on error case </param>
+        /// <exception cref="NullAssertException"> if assert false</exception>
+        public static void NotNullOrWhiteSpace(string value, Exception e, string paramName = null, string message = null)
+        {
+            CatchOnAction(e, () =>
+                            NotNullOrWhiteSpace(value, paramName, message));
+        }
+
+        /// <summary>
         /// Check if the value is null
         /// </summary>
         /// <param name="value"> value to check </param>

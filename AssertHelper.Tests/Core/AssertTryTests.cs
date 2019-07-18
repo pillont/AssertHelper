@@ -14,8 +14,10 @@ namespace AssertHelper.Tests.Core
         [Fact]
         public void TryDefaultTest()
         {
-            AssertStandard.TryDefault((Point?)null, "param");
-            AssertStandard.TryDefault(new Point(), "param");
+            XAssert.True(
+                    AssertStandard.TryDefault((Point?)null, "param"));
+            XAssert.True(
+                    AssertStandard.TryDefault(new Point(), "param"));
             XAssert.False(
                     AssertStandard.TryDefault(new Point(12, 12), "param"));
         }
@@ -23,8 +25,10 @@ namespace AssertHelper.Tests.Core
         [Fact]
         public void TryEmptyTest()
         {
-            AssertStandard.TryEmpty(null, "param");
-            AssertStandard.TryEmpty(new List<int>(), "param");
+            XAssert.True(
+                    AssertStandard.TryEmpty(null, "param"));
+            XAssert.True(
+                    AssertStandard.TryEmpty(new List<int>(), "param"));
             XAssert.False(
                     AssertStandard.TryEmpty(new List<int>() { 12, 12 }, "param"));
         }
@@ -35,7 +39,8 @@ namespace AssertHelper.Tests.Core
             XAssert.False(
                     AssertStandard.TryFalse("12" != "13", "param"));
 
-            AssertStandard.TryFalse("12" != "12", "param");
+            XAssert.True(
+                    AssertStandard.TryFalse("12" != "12", "param"));
         }
 
         [Fact]
@@ -44,13 +49,15 @@ namespace AssertHelper.Tests.Core
             XAssert.False(
                     AssertStandard.TryFalse(true, "param"));
 
-            AssertStandard.TryFalse(false, "param");
+            XAssert.True(
+                    AssertStandard.TryFalse(false, "param"));
         }
 
         [Fact]
         public void TryGreaterThanTest()
         {
-            AssertStandard.TryGreaterThan(13, 12, "param");
+            XAssert.True(
+                    AssertStandard.TryGreaterThan(13, 12, "param"));
             XAssert.False(
                     AssertStandard.TryGreaterThan(12, 13, "param"));
         }
@@ -58,7 +65,8 @@ namespace AssertHelper.Tests.Core
         [Fact]
         public void TryLessThanTest()
         {
-            AssertStandard.TryLessThan(12, 13, "param");
+            XAssert.True(
+                    AssertStandard.TryLessThan(12, 13, "param"));
             XAssert.False(
                     AssertStandard.TryLessThan(13, 12, "param"));
         }
@@ -70,7 +78,8 @@ namespace AssertHelper.Tests.Core
                     AssertStandard.TryNotDefault((Point?)null, "param"));
             XAssert.False(
                     AssertStandard.TryNotDefault(new Point(), "param"));
-            AssertStandard.TryNotDefault(new Point(12, 12), "param");
+            XAssert.True(
+                    AssertStandard.TryNotDefault(new Point(12, 12), "param"));
         }
 
         [Fact]
@@ -80,7 +89,31 @@ namespace AssertHelper.Tests.Core
                     AssertStandard.TryNotEmpty(null, "param"));
             XAssert.False(
                     AssertStandard.TryNotEmpty(new List<int>(), "param"));
-            AssertStandard.TryNotEmpty(new List<int>() { 12, 12 }, "param");
+            XAssert.True(
+                    AssertStandard.TryNotEmpty(new List<int>() { 12, 12 }, "param"));
+        }
+
+        public void TryNotNullOrEmptyTest()
+        {
+            XAssert.True(
+                    AssertStandard.TryNotNullOrEmpty("test", "param"));
+            XAssert.False(
+                            AssertStandard.TryNotNullOrEmpty(null, "param"));
+            XAssert.False(
+                            AssertStandard.TryNotNullOrEmpty("", "param"));
+        }
+
+        [Fact]
+        public void TryNotNullOrWhiteSpaceTest()
+        {
+            XAssert.True(
+                    AssertStandard.TryNotNullOrWhiteSpace("test", "param"));
+            XAssert.False(
+                            AssertStandard.TryNotNullOrWhiteSpace(null, "param"));
+            XAssert.False(
+                            AssertStandard.TryNotNullOrWhiteSpace("", "param"));
+            XAssert.False(
+                            AssertStandard.TryNotNullOrWhiteSpace(" ", "param"));
         }
 
         [Fact]
@@ -88,14 +121,17 @@ namespace AssertHelper.Tests.Core
         {
             XAssert.False(
                     AssertStandard.TryNotNull(null, "param"));
-            AssertStandard.TryNotNull(new Point(), "param");
-            AssertStandard.TryNotNull(new Point(12, 12), "param");
+            XAssert.True(
+            AssertStandard.TryNotNull(new Point(), "param"));
+            XAssert.True(
+            AssertStandard.TryNotNull(new Point(12, 12), "param"));
         }
 
         [Fact]
         public void TryNullTest()
         {
-            AssertStandard.TryNull(null, "param");
+            XAssert.True(
+                    AssertStandard.TryNull(null, "param"));
             XAssert.False(
                     AssertStandard.TryNull(new Point(), "param"));
             XAssert.False(
@@ -108,7 +144,8 @@ namespace AssertHelper.Tests.Core
             XAssert.False(
                     AssertStandard.TryTrue("12" == "13", "param"));
 
-            AssertStandard.TryTrue("12" == "12", "param");
+            XAssert.True(
+                    AssertStandard.TryTrue("12" == "12", "param"));
         }
 
         [Fact]
@@ -117,7 +154,8 @@ namespace AssertHelper.Tests.Core
             XAssert.False(
                     AssertStandard.TryTrue(false, "param"));
 
-            AssertStandard.TryTrue(true, "param");
+            XAssert.True(
+                    AssertStandard.TryTrue(true, "param"));
         }
     }
 }

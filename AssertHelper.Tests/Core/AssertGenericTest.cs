@@ -93,6 +93,29 @@ namespace AssertHelper.Tests.Core
         }
 
         [Fact]
+        public void NotNullOrEmptyTest()
+        {
+            AssertStandard.NotNullOrEmpty<ArgumentException>("test", "param");
+            XAssert.Throws<ArgumentException>(() =>
+                    AssertStandard.NotNullOrEmpty<ArgumentException>(null, "param"));
+
+            XAssert.Throws<ArgumentException>(() =>
+                    AssertStandard.NotNullOrEmpty<ArgumentException>("", "param"));
+        }
+
+        [Fact]
+        public void NotNullOrWhiteSpaceTest()
+        {
+            AssertStandard.NotNullOrWhiteSpace<ArgumentException>("test", "param");
+            XAssert.Throws<ArgumentException>(() =>
+                    AssertStandard.NotNullOrWhiteSpace<ArgumentException>(null, "param"));
+            XAssert.Throws<ArgumentException>(() =>
+                    AssertStandard.NotNullOrWhiteSpace<ArgumentException>("", "param"));
+            XAssert.Throws<ArgumentException>(() =>
+                    AssertStandard.NotNullOrWhiteSpace<ArgumentException>("  ", "param"));
+        }
+
+        [Fact]
         public void NotNullTest()
         {
             XAssert.Throws<ArgumentException>(() =>

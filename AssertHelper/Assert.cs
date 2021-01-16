@@ -208,7 +208,7 @@ namespace AssertHelper
         /// <exception cref="NullAssertException"> if assert false</exception>
         public static void NotNull(object value, string paramName = null, string message = null)
         {
-            message = message ?? $"parameter {paramName} : {message ?? $"must be null but was not"}";
+            message = message ?? $"parameter {paramName} : {message ?? $"must be not null but was not"}";
 
             if (value == null)
                 throw new NullAssertException(message, paramName);

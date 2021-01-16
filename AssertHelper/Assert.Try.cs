@@ -62,7 +62,7 @@ namespace AssertHelper
         /// <exception cref="Exceptions.DefaultAssertException"> if assert false and <see cref="TryMustDebug"/> is true</exception>
         public static bool TryDefault<T>(T value, string paramName = null, string message = null)
         {
-            return DebugAction(() =>
+            return TryAction(() =>
                         Default<T>(value, paramName, message));
         }
 
@@ -79,7 +79,7 @@ namespace AssertHelper
         /// <exception cref="Exceptions.EmptyAssertException"> if assert false and <see cref="TryMustDebug"/> is true</exception>
         public static bool TryEmpty(IEnumerable value, string paramName = null, string message = null)
         {
-            return DebugAction(() =>
+            return TryAction(() =>
                         Empty(value, paramName, message));
         }
 
@@ -96,7 +96,7 @@ namespace AssertHelper
         /// <exception cref="Exceptions.BooleanAssertException"> if assert false and <see cref="TryMustDebug"/> is true</exception>
         public static bool TryFalse(bool value, string paramName = null, string message = null)
         {
-            return DebugAction(() =>
+            return TryAction(() =>
                         False(value, paramName, message));
         }
 
@@ -114,7 +114,7 @@ namespace AssertHelper
         /// <exception cref="Exceptions.ComparisonAssertException"> if assert false and <see cref="TryMustDebug"/> is true</exception>
         public static bool TryGreaterThan(double value, double border, string paramName = null, string message = null)
         {
-            return DebugAction(() =>
+            return TryAction(() =>
                         GreaterThan(value, border, paramName, message));
         }
 
@@ -131,7 +131,7 @@ namespace AssertHelper
         /// <exception cref="Exceptions.TypeAssertException"> if assert false and <see cref="TryMustDebug"/> is true</exception>
         public static bool TryIsAssignable<T>(object value, string paramName = null, string message = null)
         {
-            return DebugAction(() =>
+            return TryAction(() =>
                         IsAssignable<T>(value, paramName, message));
         }
 
@@ -149,7 +149,7 @@ namespace AssertHelper
         /// <exception cref="Exceptions.ComparisonAssertException"> if assert false and <see cref="TryMustDebug"/> is true</exception>
         public static bool TryLessThan(double value, double border, string paramName = null, string message = null)
         {
-            return DebugAction(() =>
+            return TryAction(() =>
                         LessThan(value, border, paramName, message));
         }
 
@@ -166,7 +166,7 @@ namespace AssertHelper
         /// <exception cref="Exceptions.DefaultAssertException"> if assert false and <see cref="TryMustDebug"/> is true</exception>
         public static bool TryNotDefault<T>(T value, string paramName = null, string message = null)
         {
-            return DebugAction(() =>
+            return TryAction(() =>
                         NotDefault<T>(value, paramName, message));
         }
 
@@ -183,7 +183,7 @@ namespace AssertHelper
         /// <exception cref="Exceptions.EmptyAssertException"> if assert false and <see cref="TryMustDebug"/> is true</exception>
         public static bool TryNotEmpty(IEnumerable value, string paramName = null, string message = null)
         {
-            return DebugAction(() =>
+            return TryAction(() =>
                         NotEmpty(value, paramName, message));
         }
 
@@ -200,7 +200,7 @@ namespace AssertHelper
         /// <exception cref="Exceptions.NullAssertException"> if assert false and <see cref="TryMustDebug"/> is true</exception>
         public static bool TryNotNull(object value, string paramName = null, string message = null)
         {
-            return DebugAction(() =>
+            return TryAction(() =>
                         NotNull(value, paramName, message));
         }
 
@@ -217,7 +217,7 @@ namespace AssertHelper
         /// <exception cref="NullAssertException"> if assert false</exception>
         public static bool TryNotNullOrEmpty(string value, string paramName = null, string message = null)
         {
-            return DebugAction(() =>
+            return TryAction(() =>
                             NotNullOrEmpty(value, paramName, message));
         }
 
@@ -234,7 +234,7 @@ namespace AssertHelper
         /// <exception cref="NullAssertException"> if assert false</exception>
         public static bool TryNotNullOrWhiteSpace(string value, string paramName = null, string message = null)
         {
-            return DebugAction(() =>
+            return TryAction(() =>
                             NotNullOrWhiteSpace(value, paramName, message));
         }
 
@@ -251,7 +251,7 @@ namespace AssertHelper
         /// <exception cref="Exceptions.NullAssertException"> if assert false and <see cref="TryMustDebug"/> is true</exception>
         public static bool TryNull(object value, string paramName = null, string message = null)
         {
-            return DebugAction(() =>
+            return TryAction(() =>
                         Null(value, paramName, message));
         }
 
@@ -268,7 +268,7 @@ namespace AssertHelper
         /// <exception cref="Exceptions.BooleanAssertException"> if assert false and <see cref="TryMustDebug"/> is true</exception>
         public static bool TryTrue(bool value, string paramName = null, string message = null)
         {
-            return DebugAction(() =>
+            return TryAction(() =>
                         True(value, paramName, message));
         }
 
@@ -277,7 +277,7 @@ namespace AssertHelper
         /// if the value is true keep exception
         /// else catch it to return bool result
         /// </summary>
-        private static bool DebugAction(Action action)
+        private static bool TryAction(Action action)
         {
             try
             {
@@ -290,6 +290,7 @@ namespace AssertHelper
                 {
                     // look at the "Call Stack" window to find failed assert call  !
                     Debug.Fail(e.Message);
+                    OnFail?.Invoke(e.Message);
                 }
 
                 return false;

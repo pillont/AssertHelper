@@ -15,6 +15,8 @@ namespace AssertHelper.CastleInterceptors
             service.ApplyAsserts(invocation.Method, invocation.Arguments);
 
             invocation.Proceed();
+
+            service.ApplyResultAsserts(invocation.Method, invocation.ReturnValue);
         }
     }
 }

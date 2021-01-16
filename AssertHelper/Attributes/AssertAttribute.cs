@@ -9,6 +9,11 @@ namespace AssertHelper.Attributes
     public abstract class AssertAttribute : Attribute
     {
         /// <summary>
+        /// set to true if this attribute target result
+        /// </summary>
+        public bool IsTargetResult { get; set; }
+
+        /// <summary>
         /// Message to show during assert fail
         /// </summary>
         public string Message { get; set; }

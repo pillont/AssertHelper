@@ -1,21 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<PackageId>pillont.AssertHelper</PackageId>
+		<Authors>pillont</Authors>
+		<Version>1.2.0</Version>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Generic\**" />
-    <EmbeddedResource Remove="Generic\**" />
-    <None Remove="Generic\**" />
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Remove="Generic\**" />
+		<EmbeddedResource Remove="Generic\**" />
+		<None Remove="Generic\**" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Compile Remove="AssertState.cs" />
-    <Compile Remove="IAssertStateHolder.cs" />
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Remove="AssertState.cs" />
+		<Compile Remove="IAssertStateHolder.cs" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\AssertHelper.Utils\AssertHelper.Utils.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\AssertHelper.Utils\AssertHelper.Utils.csproj" />
+	</ItemGroup>
 </Project>

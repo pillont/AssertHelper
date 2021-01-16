@@ -46,13 +46,41 @@ namespace AssertHelper.Logic.AttributesActions
             MethodInfo currentMethod = attributeCollection.CurrentMethod;
             MethodInfo interfaceMethod = attributeCollection.InterfaceMethod;
 
-            ApplyAssertOnMethodParameters(parameters, interfaceMethod, attributeCollection.InterfaceParamAttr);
-            ApplyAssertOnMethod(attributeCollection.InterfaceMethod, attributeCollection.InterfaceMethodAttributes, parameters);
+            var interfaceParamAttr = attributeCollection.InterfaceParamAttr
+                .Where(pair => !pair.Key.IsTargetResult);
+            ApplyAssertOnMethodParameters(parameters, interfaceMethod, interfaceParamAttr);
+
+            IEnumerable<AssertAttribute> interfaceMethodAttributes = attributeCollection.InterfaceMethodAttributes
+                .Where(attr => !attr.IsTargetResult);
+            ApplyAssertOnMethod(attributeCollection.InterfaceMethod, interfaceMethodAttributes, parameters);
 
             if (currentMethod != interfaceMethod)
             {
-                ApplyAssertOnMethodParameters(parameters, currentMethod, attributeCollection.CurrentParamAttr);
-                ApplyAssertOnMethod(currentMethod, attributeCollection.CurrentMethodAttributes, parameters);
+                var currentParamAttr = attributeCollection.CurrentParamAttr
+                    .Where(pair => !pair.Key.IsTargetResult);
+                ApplyAssertOnMethodParameters(parameters, currentMethod, currentParamAttr);
+
+                var currentMethodAttributes = attributeCollection.CurrentMethodAttributes
+                    .Where(attr => !attr.IsTargetResult);
+                ApplyAssertOnMethod(currentMethod, currentMethodAttributes, parameters);
+            }
+        }
+
+        public void ApplyResultAsserts(MethodInfo method, object returnValue)
+        {
+            AttributeCollection attributeCollection = AttributeCache.CollectWithCache(method);
+            MethodInfo currentMethod = attributeCollection.CurrentMethod;
+            MethodInfo interfaceMethod = attributeCollection.InterfaceMethod;
+
+            var interfaceMethodAttributes = attributeCollection.InterfaceMethodAttributes
+                .Where(attr => attr.IsTargetResult);
+            ApplyAssertOnResult(attributeCollection.InterfaceMethod, interfaceMethodAttributes, returnValue);
+
+            if (currentMethod != interfaceMethod)
+            {
+                var currentMethodAttributes = attributeCollection.CurrentMethodAttributes
+                    .Where(attr => attr.IsTargetResult);
+                ApplyAssertOnResult(currentMethod, currentMethodAttributes, returnValue);
             }
         }
 
@@ -82,6 +110,14 @@ namespace AssertHelper.Logic.AttributesActions
                     paramValue = CollectValueFromMethod(paramName, currentMethod, parameters);
                 }
                 Service.ApplyAssertOnValue(attr, paramValue);
+            }
+        }
+
+        private void ApplyAssertOnResult(MethodInfo method, IEnumerable<AssertAttribute> allAttributes, object returnValue)
+        {
+            foreach (var attr in allAttributes)
+            {
+                Service.ApplyAssertOnValue(attr, returnValue);
             }
         }
 

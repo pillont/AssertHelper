@@ -1,4 +1,5 @@
 using System;
+using AssertHelper.Exceptions;
 
 namespace AssertHelper.Attributes
 {
@@ -8,6 +9,8 @@ namespace AssertHelper.Attributes
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property, Inherited = true, AllowMultiple = true)]
     public abstract class AssertAttribute : Attribute
     {
+        public Type ExceptionType { get; set; } = typeof(AssertException);
+
         /// <summary>
         /// set to true if this attribute target result
         /// </summary>

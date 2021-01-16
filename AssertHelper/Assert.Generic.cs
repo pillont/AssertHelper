@@ -314,6 +314,28 @@ namespace AssertHelper
                         True(value, paramName, message));
         }
 
+        internal static Exception CastExceptionInOtherType(Exception e, Type targetType)
+        {
+            var ctor = targetType.GetConstructor(new[] { typeof(string) });
+
+            bool useMessage = true;
+            if (ctor == null)
+            {
+                useMessage = false;
+                targetType.GetConstructor(Type.EmptyTypes);
+            }
+
+            // NOTE : not use assert, else inseption of assert !
+            // EXCEPTION : StackOverflow
+            if (ctor == null)
+                throw new AssertException($"{targetType} need ctor() or ctor(string) to be used in generic assert");
+
+            var exception = useMessage
+                        ? Activator.CreateInstance(targetType, new[] { e.Message }) as Exception
+                        : Activator.CreateInstance(targetType) as Exception;
+            return exception;
+        }
+
         /// <summary>
         /// logic about the <see cref="TryMustDebug"/>
         /// if the value is true keep exception
@@ -328,23 +350,7 @@ namespace AssertHelper
             }
             catch (Exception e)
             {
-                bool useMessage = true;
-                var ctor = typeof(T).GetConstructor(new[] { typeof(string) });
-
-                if (ctor == null)
-                {
-                    useMessage = false;
-                    typeof(T).GetConstructor(Type.EmptyTypes);
-                }
-
-                // NOTE : not use assert, else inseption of assert !
-                // EXCEPTION : StackOverflow
-                if (ctor == null)
-                    throw new AssertException($"{typeof(T)} need ctor() or ctor(string) to be used in generic assert");
-
-                var exception = useMessage
-                            ? Activator.CreateInstance(typeof(T), new[] { e.Message }) as Exception
-                            : Activator.CreateInstance<T>() as Exception;
+                Exception exception = CastExceptionInOtherType(e, typeof(T));
 
                 throw exception;
             }
